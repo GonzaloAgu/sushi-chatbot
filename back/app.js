@@ -1,7 +1,6 @@
 import express from 'express';
 import router from './src/routes.js'
-import { initDb } from './src/database.js';
-import { geminiTest } from './src/gemini.js';
+import { initDb } from './src/db/database.js';
 
 
 const PORT = 8080;

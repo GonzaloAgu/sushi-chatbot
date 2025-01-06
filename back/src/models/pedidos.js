@@ -8,6 +8,6 @@ const pedidoSchema = new Schema({
     monto: Number
 }, { collection: 'pedidos' });
 
-const Pedido = mongoose.model('Menu', pedidoSchema)
+const Pedido = mongoose.model('Pedido', pedidoSchema)
 
 export default Pedido;

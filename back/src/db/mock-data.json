@@ -1,0 +1,42 @@
+[
+    {
+      "nombre": "Sushi Nigiri Salmón",
+      "precio": 12000
+    },
+    {
+      "nombre": "Sushi Nigiri Atún",
+      "precio": 13000
+    },
+    {
+      "nombre": "Sushi Nigiri Langostino",
+      "precio": 14000
+    },
+    {
+      "nombre": "Sushi Roll Philadelphia",
+      "precio": 16000
+    },
+    {
+      "nombre": "Sushi Roll Veggie",
+      "precio": 10000
+    },
+    {
+      "nombre": "Sushi Roll Teriyaki",
+      "precio": 15000
+    },
+    {
+      "nombre": "Sushi Sashimi Salmón",
+      "precio": 20000
+    },
+    {
+      "nombre": "Sushi Sashimi Atún",
+      "precio": 21000
+    },
+    {
+      "nombre": "Sushi Tempura Roll",
+      "precio": 18000
+    },
+    {
+      "nombre": "Sushi Especial Chef",
+      "precio": 25000
+    }
+  ]
