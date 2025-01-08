@@ -2,7 +2,6 @@ import { sendMessage } from "../ai/gemini.js"
 
 export const sendChat = async (req, res) => {
     try {
-        console.log(req.body)
         const response = await sendMessage(req.body.message);
         return res.json({message: response})
     } catch (e) {
