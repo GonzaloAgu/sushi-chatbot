@@ -1,4 +1,5 @@
 import { SchemaType } from "@google/generative-ai"
+import { Schema } from "mongoose"
 
 export default class GeminiResponseSchemas {
     static default = {
@@ -14,24 +15,6 @@ export default class GeminiResponseSchemas {
                     type: SchemaType.STRING,
                     description: "Mensaje a escribirle al usuario en la respuesta",
                     nullable: false
-                },
-                orden: {
-                    type: SchemaType.ARRAY,
-                    description: "Listado de productos solicitados por el usuario",
-                    items: {
-                        type: SchemaType.OBJECT,
-                        properties: {
-                            nombre: {
-                                type: SchemaType.STRING,
-                                description: "Nombre del producto solicitado"
-                            },
-                            cantidad: {
-                                type: SchemaType.NUMBER,
-                                description: "Cantidad solicitada del producto"
-                            }
-                        }
-                    },
-                    nullable: true
                 }
             },
         required: ["tipo", "mensaje"]
@@ -39,7 +22,40 @@ export default class GeminiResponseSchemas {
     }
 
     static productList = {
-        type: SchemaType.STRING,
-        productos: SchemaType.ARRAY
+        description: "Selecciona los productos del menu que fueron elegidos por el usuario en su mensaje",
+        type: SchemaType.OBJECT,
+        properties: {
+            orden: {
+                type: SchemaType.ARRAY,
+                description: "Listado de productos solicitados por el usuario. Deben existir en el menu",
+                items: {
+                    type: SchemaType.OBJECT,
+                    properties: {
+                        objectId: {
+                            type: SchemaType.STRING,
+                            description: "ObjectId del producto seleccionado"
+                        },
+                        nombre: {
+                            type: SchemaType.STRING,
+                            description: "Nombre del producto solicitado"
+                        },
+                        cantidad: {
+                            type: SchemaType.NUMBER,
+                            description: "Cantidad solicitada del producto"
+                        },
+                        precioUnitario: {
+                            type: SchemaType.NUMBER,
+                            description: "Precio unitario del producto"
+                        }
+                    }
+                },
+                nullable: false
+            },
+            direccion: {
+                type: SchemaType.STRING,
+                description: "Dirección indicada por el cliente para realizar el envío. Si el usuario no fue claro o no incluyó su dirección, debe ser null",
+                nullable: true
+            }
+        }
     }
 }

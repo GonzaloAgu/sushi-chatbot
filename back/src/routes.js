@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { sendChat } from './services/chat.js';
+import { hacerPedido } from './services/menu.js';
 
 const router = Router()
 
@@ -14,6 +15,24 @@ router.post('/sendchat', async (req, res) => {
     } catch (e) {
         console.error("Error al comunicarse con la IA: ", e)
         return res.status(500).json({message: "Se produjo un error al comunicarse con la IA."})
+    }
+})
+
+router.post('/ordenar', async (req, res) => {
+    if(!req.body.orden || !req.body.direccion){
+        res.status(400).json({error: "Cuerpo de solicitud incompleto (productos, direccion)"})
+    }
+    try {
+        const pedido = await hacerPedido(req.body.orden, req.body.direccion)
+        const montoTotal = req.body.orden.reduce((total, p) => total + p.cantidad * p.precioUnitario, 0 )
+        res.json({
+            orden: req.body.orden,
+            direccion: pedido.direccion,
+            montoTotal
+        })
+    } catch (e) {
+        console.error("Error al confirmar la orden. ", e);
+        res.status(500).json({ message: "Error al confirmar la orden."})
     }
 })
 
