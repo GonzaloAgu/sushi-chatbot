@@ -32,9 +32,9 @@ const handleOrderRequest = async (message, response) => {
 export const sendChat = async (message) => {
   let response = await askGemini(message);
   if (response.tipo === "menu") {
-    response = handleMenuRequest(response);
+    response = await handleMenuRequest(response);
   } else if (response.tipo === "orden") {
-    response = handleOrderRequest(message, response)
+    response = await handleOrderRequest(message, response)
   }
   return response;
 };
