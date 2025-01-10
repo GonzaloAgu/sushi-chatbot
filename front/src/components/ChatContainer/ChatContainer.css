@@ -1,0 +1,13 @@
+.main-chat {
+    border-radius: 1rem;
+    border: 1px solid gainsboro;
+}
+
+.chat-header {
+    font-size: 1.2rem;
+    text-align: start;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-bottom: 1px solid gainsboro;
+    padding: 0.5rem 0;
+    padding-left: 1rem;
+}
