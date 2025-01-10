@@ -1,0 +1,33 @@
+.chat-message {
+    display: block;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    white-space: pre-wrap;
+    padding: 0.6rem 1rem;
+    width: fit-content;
+    max-width: 60%;
+    border-radius: 0.8rem;
+    margin-inline: 0.5rem;
+    margin-top: 0.4rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.229);
+}
+
+.chat-message:last-child {
+    margin-top: 1rem;
+}
+
+.chat-message:first-child {
+    margin-bottom: 1rem;
+}
+
+.role-user {
+    align-self: flex-end;
+    text-align: end;
+    background: linear-gradient(darkslateblue, rgb(60, 52, 117));
+}
+
+.role-assistant {
+    align-self: flex-start;
+    text-align: start;
+    background: radial-gradient(rgb(31, 30, 30), rgb(20, 20, 19));
+}

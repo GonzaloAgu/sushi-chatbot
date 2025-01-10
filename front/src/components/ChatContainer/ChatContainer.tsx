@@ -5,7 +5,7 @@ function ChatContainer() {
     return ( 
         <div className="main-chat">
             <div className='chat-header'>
-                Asistente Saka
+               ✨ Asistente Saka
             </div>
             <Chat/>
         </div>

@@ -1,0 +1,7 @@
+.main-chat-history {
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 20rem;
+    max-height: 40vh;
+    overflow-y: scroll;
+}
