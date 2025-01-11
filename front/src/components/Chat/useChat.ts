@@ -3,6 +3,7 @@ import { Message } from "../ChatMessage/ChatMessage"
 
 export default function useChat() {
     const [messages, setMessages] = useState<Message[]>([])
+    const [waiting, setWaiting] = useState<boolean>(false)
 
     const addMessage = (message: Message) => {
         setMessages((prevMessages) => [message, ...prevMessages]);
@@ -16,6 +17,7 @@ export default function useChat() {
             }
 
             addMessage(msg);
+            setWaiting(true)
         }
 
         setTimeout(() => {
@@ -23,10 +25,11 @@ export default function useChat() {
                 text: "Dale, ahi te digo",
                 role: "assistant"
             }
+            setWaiting(false)
             addMessage(msg)
         }, 1000)
     }
 
-    return {messages, sendMessage}
+    return {messages, sendMessage, waiting}
   
 }

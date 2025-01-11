@@ -23,7 +23,7 @@
 .role-user {
     align-self: flex-end;
     text-align: end;
-    background: linear-gradient(darkslateblue, rgb(60, 52, 117));
+    background: linear-gradient(darkslateblue, #3c3475);
 }
 
 .role-assistant {
