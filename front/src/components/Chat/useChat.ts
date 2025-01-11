@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { IMessage } from "../ChatMessage/ChatMessage"
+import askLLM from "./askLLM"
 
 export default function useChat() {
     const [messages, setMessages] = useState<IMessage[]>([])
@@ -17,17 +18,14 @@ export default function useChat() {
             }
 
             addMessage(msg);
-            setWaiting(true)
+            setWaiting(true);
+
+            askLLM(userMsg, (response) => {
+                addMessage(response);
+                setWaiting(false);
+            })
         }
 
-        setTimeout(() => {
-            const msg: IMessage = {
-                text: "Dale, ahi te digo",
-                role: "assistant"
-            }
-            setWaiting(false)
-            addMessage(msg)
-        }, 1000)
     }
 
     return {messages, sendMessage, waiting}
