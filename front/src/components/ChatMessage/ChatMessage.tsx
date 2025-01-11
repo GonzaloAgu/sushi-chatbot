@@ -1,11 +1,11 @@
 import './ChatMessage.css'
 
-export interface Message {
+export interface IMessage {
     text: string,
     role: "user" | "assistant"
 }
 
-function ChatMessage(message: Message) {
+function ChatMessage(message: IMessage) {
     return (
     <div className={`chat-message role-${message.role}`}>
         {message.text}

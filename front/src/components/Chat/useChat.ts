@@ -1,17 +1,17 @@
 import { useState } from "react"
-import { Message } from "../ChatMessage/ChatMessage"
+import { IMessage } from "../ChatMessage/ChatMessage"
 
 export default function useChat() {
-    const [messages, setMessages] = useState<Message[]>([])
+    const [messages, setMessages] = useState<IMessage[]>([])
     const [waiting, setWaiting] = useState<boolean>(false)
 
-    const addMessage = (message: Message) => {
+    const addMessage = (message: IMessage) => {
         setMessages((prevMessages) => [message, ...prevMessages]);
     }
 
     const sendMessage = (userMsg: string) => {
         if(userMsg.trim()) {
-            const msg: Message = {
+            const msg: IMessage = {
                 text: userMsg,
                 role: "user"
             }
@@ -21,7 +21,7 @@ export default function useChat() {
         }
 
         setTimeout(() => {
-            const msg: Message = {
+            const msg: IMessage = {
                 text: "Dale, ahi te digo",
                 role: "assistant"
             }

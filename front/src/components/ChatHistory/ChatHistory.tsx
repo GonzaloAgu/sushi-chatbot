@@ -1,14 +1,14 @@
 import ChatMessage from '../ChatMessage/ChatMessage';
 import './ChatHistory.css'
-import { Message } from '../ChatMessage/ChatMessage';
+import { IMessage } from '../ChatMessage/ChatMessage';
 import { Discuss } from 'react-loader-spinner';
 
-function ChatHistory({messages, waiting}: { messages: Message[], waiting: boolean}) {
+function ChatHistory({messages, waiting}: { messages: IMessage[], waiting: boolean}) {
     return (
     <div className='main-chat-history'>
         {
         messages.map(
-            (msg: Message) => <ChatMessage text={msg.text} role={msg.role}/>)
+            (msg: IMessage) => <ChatMessage text={msg.text} role={msg.role}/>)
         }
         {waiting &&
             <div className='spinner-wrapper'>
