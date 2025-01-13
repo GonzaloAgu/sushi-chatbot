@@ -1,5 +1,6 @@
 import express from 'express';
 import router from './src/routes.js'
+import cors from "cors"
 import { initDb } from './src/db/database.js';
 
 
@@ -8,8 +9,10 @@ const app = express();
 
 initDb()
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
+
 
 app.use(router)
 

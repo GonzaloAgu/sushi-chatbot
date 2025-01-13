@@ -24,7 +24,10 @@ const handleOrderRequest = async (message, response) => {
   }
   
   response.orden = productos.orden;
-  response.mensaje = "Esto sería lo que estás apunto de pedir. Confirme su pedido haciendo click en el botón de confirmar."
+  if(response.orden.length > 0)
+    response.mensaje = "Esto sería lo que estás apunto de pedir. Confirme su pedido haciendo click en el botón de confirmar."
+  else
+    response.mensaje = "No encontré en nuestro menú lo que nos solicitaste. Revisa nuestro menú e intentalo nuevamente."
 
   return response;
 }

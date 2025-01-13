@@ -11,18 +11,27 @@ export default function useChat() {
     }
 
     const sendMessage = (userMsg: string) => {
-        if(userMsg.trim()) {
-            const msg: IMessage = {
-                text: userMsg,
-                role: "user"
-            }
+        try {
+            if(userMsg.trim()) {
+                const msg: IMessage = {
+                    text: userMsg,
+                    role: "user"
+                }
+    
+                addMessage(msg);
+                setWaiting(true);
+    
+                askLLM(userMsg, (response) => {
+                    addMessage(response);
+                    setWaiting(false);
+                })
+            } 
 
-            addMessage(msg);
-            setWaiting(true);
-
-            askLLM(userMsg, (response) => {
-                addMessage(response);
-                setWaiting(false);
+        } catch (e: any) {
+            console.error(e)
+            addMessage({
+                text: "Se produjo un error al consultar",
+                role: "assistant"
             })
         }
 

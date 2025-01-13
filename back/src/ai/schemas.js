@@ -53,7 +53,7 @@ export default class GeminiResponseSchemas {
             },
             direccion: {
                 type: SchemaType.STRING,
-                description: "Dirección indicada por el cliente para realizar el envío. Si el usuario no fue claro o no incluyó su dirección, debe ser null",
+                description: "Dirección indicada por el cliente para realizar el envío. Consiste en al menos un nombre de calle y una altura, opcionalmente piso y departamento. Puede encontrarse luego de un 'para' 'a' o 'hacia', además de otras formas más explicitas. Si el usuario no incluyó su dirección, debe ser null",
                 nullable: true
             }
         }

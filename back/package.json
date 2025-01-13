@@ -13,6 +13,7 @@
     "@botpress/chat": "^0.4.6",
     "@google/generative-ai": "^0.21.0",
     "axios": "^1.7.9",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "lodash": "^4.17.21",
     "mongoose": "^8.9.3"

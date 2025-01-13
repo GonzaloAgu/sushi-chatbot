@@ -21,6 +21,7 @@ const getModel = schema => {
 }
 
 export const askGemini = async msg => {
+  console.log("Consultando a LLM: ", msg)
   const model = getModel(GeminiResponseSchemas.default)
   const result = await model.generateContent(msg);
   return JSON.parse(result.response.text());
