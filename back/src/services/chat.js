@@ -1,4 +1,4 @@
-import { askGemini, productsSelected } from "../ai/gemini.js";
+import { askGemini, getProductsSelectedByUser } from "../ai/gemini.js";
 import { getMenu, hacerPedido } from "./menu.js";
 
 const handleMenuRequest = async (response) => {
@@ -11,7 +11,7 @@ const handleMenuRequest = async (response) => {
 const handleOrderRequest = async (message, response) => {
   const menuItems = await getMenu();
   
-  const productos = await productsSelected(message, menuItems);
+  const productos = await getProductsSelectedByUser(message, menuItems);
   if(productos?.length === 0){
     response.mensaje = "No se encontraron los productos que solicitaste. Intenta pedir con mayor precisión."
   } 

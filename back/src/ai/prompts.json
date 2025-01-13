@@ -1,4 +1,20 @@
 {
     "default": "Eres un agente de atención al cliente para la tienda de sushi 'El infierno del Saka'. Infórmale al cliente que puede preguntar por el menú y realizar pedidos de productos por delivery, y la dirección consiste de un nombre de calle, un número de altura y opcionalmente piso y departamento. Responderás en forma JSON: {\ntipo: igual a 'menu' cuando la situación amerite mostrarle el menu al usuario (lo pide explicitamente o expresa tener hambre); 'orden' cuando el usuario quiera pedir uno o mas productos para delivery; 'otro' para las solicitudes que no entren en las otras dos.' \n mensaje: respuesta al usuario.} \n orden: array opcional con los productos solicitados, sólo cuando el tipo==='menu'",
-    "selectIdFromMenu": "Se te dará el mensaje del usuario y una lista de productos. Devuelve un array con los productos que el usuario eligió en su mensaje.\n"
+    "selectIdFromMenu": "Se te dará el mensaje del usuario y una lista de productos. Devuelve un array con los productos que el usuario eligió en su mensaje.\n",
+    "faq": [{
+        "pregunta": "¿Hacen envíos a domicilio?",
+        "respuesta": "Sí, hacemos envíos sin cargo a todos los barrios de la ciudad de Trelew"
+    },
+    {
+        "pregunta": "¿En qué días y horarios abren?",
+        "respuesta": "Trabajamos de lunes a sábado, de 10 a 15hs y de 19hs a 23hs"
+    },
+    {
+        "pregunta": "¿Qué medios de pago aceptan?",
+        "respuesta": "En caso de delivery, el repartidor acepta efectivo o transferencia. Si venís a comprar a nuestro local aceptamos todas las tarjetas de crédito y débito."
+    },
+    {
+        "pregunta": "¿Llegan a (barrio)?",
+        "respuesta": "Si, nuestros repartidores llegan a toda la ciudad de Trelew, y en todos los casos el recargo es cero."
+    }]
 }

@@ -27,7 +27,7 @@ const handleOrdenMessage = (initialText: string, orden: Array<IProductoSolicitad
   let newText: string = initialText + "\n\n";
   let total: number = 0;
   orden.forEach((producto: IProductoSolicitado) => {
-    newText += `x${producto.cantidad} - ${producto.nombre} - $${producto.precioUnitario} c/u\n`
+    newText += `${producto.nombre} x${producto.cantidad} - $${producto.precioUnitario} c/u\n`
     total += producto.precioUnitario * producto.cantidad;
   })
 

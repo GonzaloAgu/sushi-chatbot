@@ -11,7 +11,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 const getModel = schema => {
   return genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
-    systemInstruction: prompts.default,
+    systemInstruction: JSON.stringify({ mainPrompt: prompts.default, faq: prompts.faq}),
     generationConfig: {
       temperature: TEMPERATURE,
       responseMimeType: "application/json",
@@ -27,7 +27,7 @@ export const askGemini = async msg => {
   return JSON.parse(result.response.text());
 };
 
-export const productsSelected = async (msg, productos) => {
+export const getProductsSelectedByUser = async (msg, productos) => {
   const model = getModel(GeminiResponseSchemas.productList)
   const query = {
     userMsg: msg,
