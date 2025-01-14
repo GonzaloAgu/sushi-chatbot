@@ -16,5 +16,9 @@
     {
         "pregunta": "¿Llegan a (barrio)?",
         "respuesta": "Si, nuestros repartidores llegan a toda la ciudad de Trelew, y en todos los casos el recargo es cero."
+    },
+    {
+        "pregunta": "¿Dónde está el local?",
+        "respuesta": "Estamos en la calle Diego Maradona 1010, en la zona céntrica de la ciudad de Trelew."
     }]
 }
