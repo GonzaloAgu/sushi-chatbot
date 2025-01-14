@@ -7,10 +7,8 @@ interface IProducto {
   precio: number
 }
 
-interface IProductoSolicitado {
-  nombre: string,
+interface IProductoSolicitado extends IProducto {
   cantidad: number,
-  precioUnitario: number,
   objectId: string
 }
 
@@ -27,8 +25,8 @@ const handleOrdenMessage = (initialText: string, orden: Array<IProductoSolicitad
   let newText: string = initialText + "\n\n";
   let total: number = 0;
   orden.forEach((producto: IProductoSolicitado) => {
-    newText += `${producto.nombre} x${producto.cantidad} - $${producto.precioUnitario} c/u\n`
-    total += producto.precioUnitario * producto.cantidad;
+    newText += `${producto.nombre} x${producto.cantidad} - $${producto.precio} c/u\n`
+    total += producto.precio * producto.cantidad;
   })
 
   newText += "\nTotal: $" + total;
@@ -53,14 +51,21 @@ export default async function askLLM(userMsg: string, onResponse: (response: IMe
     const msg: IMessage = {
       text: parsedMessage.mensaje,
       role: "assistant",
+      type: parsedMessage.tipo
     };
 
     if(parsedMessage.tipo === "menu") {
       msg.text = handleMenuMessage(msg.text, parsedMessage.menu)
     }
 
-    if(parsedMessage.tipo === "orden" && parsedMessage.direccion !== null && parsedMessage.orden.length > 0) {
-      msg.text = handleOrdenMessage(msg.text, parsedMessage.orden, parsedMessage.direccion)
+    // Evitar
+    if(parsedMessage.tipo === "orden"){
+      if(parsedMessage.direccion !== null && parsedMessage.orden?.length > 0) {
+        msg.text = handleOrdenMessage(msg.text, parsedMessage.orden, parsedMessage.direccion)
+      } else {
+        msg.type = "otro"; // para evitar mostrar el boton confirmar orden si falta información
+      }
+
     }
 
     onResponse(msg);

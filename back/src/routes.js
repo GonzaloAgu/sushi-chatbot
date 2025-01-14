@@ -24,7 +24,7 @@ router.post('/ordenar', async (req, res) => {
     }
     try {
         const pedido = await hacerPedido(req.body.orden, req.body.direccion)
-        const montoTotal = req.body.orden.reduce((total, p) => total + p.cantidad * p.precioUnitario, 0 )
+        const montoTotal = req.body.orden.reduce((total, p) => total + p.cantidad * p.precio, 0 )
         res.json({
             orden: req.body.orden,
             direccion: pedido.direccion,

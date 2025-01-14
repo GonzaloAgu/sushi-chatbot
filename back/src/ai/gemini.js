@@ -34,5 +34,9 @@ export const getProductsSelectedByUser = async (msg, productos) => {
     productos
   }
   const response = await model.generateContent(JSON.stringify(query))
-  return JSON.parse(response.response.text())
+  try {
+    return JSON.parse(response.response.text())
+  } catch (e) {
+    throw new Error("El LLM devolvió un JSON no parseable: ", response.response.text())
+  }
 };

@@ -31,3 +31,9 @@
     text-align: start;
     background: radial-gradient(rgb(31, 30, 30), rgb(20, 20, 19));
 }
+
+.confirm-div {
+    display: flex;
+    justify-content: end;
+    margin-top: 1rem;
+}

@@ -8,7 +8,7 @@ function ChatHistory({messages, waiting}: { messages: IMessage[], waiting: boole
     <div className='main-chat-history'>
         {
         messages.map(
-            (msg: IMessage, idx: any) => <ChatMessage key={idx} text={msg.text} role={msg.role}/>)
+            (msg: IMessage, idx: any) => <ChatMessage key={idx} message={msg} />)
         }
         {waiting &&
             <div className='spinner-wrapper'>

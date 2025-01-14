@@ -18,7 +18,7 @@ function ChatInput( {handleMessage}: {handleMessage: (msg: string) => void} ) {
             <input 
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder='Pidele el menú, o encarga un pedido, o pregunta lo que sea'
+            placeholder='Pedí el menú, encargá un pedido, o preguntá lo que quieras!'
             />
             <button type="submit">Enviar</button>
         </form>
