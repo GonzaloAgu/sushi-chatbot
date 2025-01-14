@@ -1,16 +1,6 @@
-import { IMessage } from "../ChatMessage/ChatMessage";
-
+import { IMessage } from "../../types";
+import { IProducto,IProductoSolicitado } from "../../types";
 const API_URL: string  = import.meta.env.VITE_BACKEND_URL;
-
-interface IProducto {
-  nombre: string,
-  precio: number
-}
-
-export interface IProductoSolicitado extends IProducto {
-  cantidad: number,
-  objectId: string
-}
 
 const handleMenuMessage = (initialText: string, menu: Array<IProducto>): string => {
   let newText = initialText;
