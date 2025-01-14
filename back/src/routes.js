@@ -26,13 +26,14 @@ router.post('/ordenar', async (req, res) => {
         const pedido = await hacerPedido(req.body.listaProductos, req.body.direccion)
         const montoTotal = req.body.listaProductos.reduce((total, p) => total + p.cantidad * p.precio, 0 )
         res.json({
+            ok: true,
             listaProductos: req.body.listaProductos,
             direccion: pedido.direccion,
             montoTotal
         })
     } catch (e) {
         console.error("Error al confirmar la orden. ", e);
-        res.status(500).json({ message: "Error al confirmar la orden."})
+        res.status(500).json({ ok: false, message: "Error al confirmar la orden."})
     }
 })
 

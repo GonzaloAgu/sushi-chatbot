@@ -1,6 +1,6 @@
 import ChatMessage from '../ChatMessage/ChatMessage';
 import './ChatHistory.css'
-import { IMessage } from '../ChatMessage/ChatMessage';
+import { IMessage } from '../../types';
 import { Discuss } from 'react-loader-spinner';
 
 function ChatHistory({messages, waiting}: { messages: IMessage[], waiting: boolean}) {
@@ -8,7 +8,7 @@ function ChatHistory({messages, waiting}: { messages: IMessage[], waiting: boole
     <div className='main-chat-history'>
         {
         messages.map(
-            (msg: IMessage, idx: any) => <ChatMessage key={idx} message={msg} />)
+            (msg: IMessage, idx: any) => <ChatMessage key={msg.text + idx} message={msg} />)
         }
         {waiting &&
             <div className='spinner-wrapper'>

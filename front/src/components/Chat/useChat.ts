@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { IMessage } from "../ChatMessage/ChatMessage"
+import { IMessage, IOrden } from "../../types"
 import askLLM from "./askLLM"
-import { IOrden } from "../Chat/Chat"
 
 export default function useChat() {
     const [messages, setMessages] = useState<IMessage[]>([])
@@ -42,6 +41,6 @@ export default function useChat() {
 
     }
 
-    return {messages, sendMessage, waiting, orden}
+    return {messages, sendMessage, waiting, orden, addMessage}
   
 }

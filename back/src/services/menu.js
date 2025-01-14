@@ -22,6 +22,7 @@ export const hacerPedido = async (listaProductos, direccion) => {
         pedido.productos.push({id: producto.objectId, cantidad: producto.cantidad, precio: producto.precio})
     });
     try {
+        console.log("Guardando pedido con " + listaProductos.length + " producto(s)")
         await pedido.save()
         return pedido;
     } catch(err) {

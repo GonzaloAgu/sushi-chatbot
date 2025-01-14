@@ -47,7 +47,8 @@ export default class GeminiResponseSchemas {
                             type: SchemaType.NUMBER,
                             description: "Precio unitario del producto"
                         }
-                    }
+                    },
+                    required: ["objectId", "nombre", "cantidad", "precio"]
                 },
                 nullable: false
             },
