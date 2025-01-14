@@ -1,5 +1,5 @@
 import './ChatMessage.css'
-import ConfirmBtn from './ConfirmBtn/ConfirmBtn';
+import ConfirmBtn from '../ConfirmBtn/ConfirmBtn';
 
 export interface IMessage {
     text: string,
