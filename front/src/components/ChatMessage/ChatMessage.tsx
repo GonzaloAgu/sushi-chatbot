@@ -1,10 +1,12 @@
 import './ChatMessage.css'
 import ConfirmBtn from '../ConfirmBtn/ConfirmBtn';
+import { IOrden } from '../Chat/Chat';
 
 export interface IMessage {
     text: string,
     role: "user" | "assistant",
-    type?: "otro" | "orden" | "menu"
+    type?: "otro" | "orden" | "menu",
+    orden?: IOrden
 }
 
 function ChatMessage({message}: {message: IMessage}) {

@@ -10,16 +10,16 @@ export const getMenu = async () => {
     }
 }
 
-export const hacerPedido = async (productos, direccion) => {
-    if(!productos || productos.length === 0){
+export const hacerPedido = async (listaProductos, direccion) => {
+    if(!listaProductos || listaProductos.length === 0){
         throw new Error("No se incluyeron productos en el pedido.")
     }
     let pedido = new Pedido()
     pedido.fecha = new Date();
     pedido.direccion = direccion;
 
-    productos.forEach(producto => {
-        pedido.productos.push(producto.objectId)
+    listaProductos.forEach(producto => {
+        pedido.productos.push({id: producto.objectId, cantidad: producto.cantidad, precio: producto.precio})
     });
     try {
         await pedido.save()

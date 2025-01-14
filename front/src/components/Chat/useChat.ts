@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { IMessage } from "../ChatMessage/ChatMessage"
 import askLLM from "./askLLM"
+import { IOrden } from "../Chat/Chat"
 
 export default function useChat() {
     const [messages, setMessages] = useState<IMessage[]>([])
     const [waiting, setWaiting] = useState<boolean>(false)
+    const [orden, setOrden] = useState<IOrden>({direccion:"", listaProductos: []})
 
     const addMessage = (message: IMessage) => {
         setMessages((prevMessages) => [message, ...prevMessages]);
@@ -24,6 +26,9 @@ export default function useChat() {
                 askLLM(userMsg, (response) => {
                     addMessage(response);
                     setWaiting(false);
+                    if(response.type === "orden" && response.orden?.listaProductos.length){
+                        setOrden({listaProductos: response.orden.listaProductos, direccion: response.orden.direccion}) 
+                    }
                 })
             } 
 
@@ -37,6 +42,6 @@ export default function useChat() {
 
     }
 
-    return {messages, sendMessage, waiting}
+    return {messages, sendMessage, waiting, orden}
   
 }

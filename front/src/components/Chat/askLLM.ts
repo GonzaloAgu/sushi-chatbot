@@ -7,7 +7,7 @@ interface IProducto {
   precio: number
 }
 
-interface IProductoSolicitado extends IProducto {
+export interface IProductoSolicitado extends IProducto {
   cantidad: number,
   objectId: string
 }
@@ -58,10 +58,15 @@ export default async function askLLM(userMsg: string, onResponse: (response: IMe
       msg.text = handleMenuMessage(msg.text, parsedMessage.menu)
     }
 
-    // Evitar
+  
     if(parsedMessage.tipo === "orden"){
       if(parsedMessage.direccion !== null && parsedMessage.orden?.length > 0) {
         msg.text = handleOrdenMessage(msg.text, parsedMessage.orden, parsedMessage.direccion)
+        msg.orden = {
+          listaProductos: parsedMessage.orden,
+          direccion: parsedMessage.direccion
+        } ;
+        
       } else {
         msg.type = "otro"; // para evitar mostrar el boton confirmar orden si falta información
       }

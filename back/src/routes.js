@@ -19,14 +19,14 @@ router.post('/sendchat', async (req, res) => {
 })
 
 router.post('/ordenar', async (req, res) => {
-    if(!req.body.orden || !req.body.direccion){
+    if(!req.body.listaProductos || !req.body.direccion){
         res.status(400).json({error: "Cuerpo de solicitud incompleto (productos, direccion)"})
     }
     try {
-        const pedido = await hacerPedido(req.body.orden, req.body.direccion)
-        const montoTotal = req.body.orden.reduce((total, p) => total + p.cantidad * p.precio, 0 )
+        const pedido = await hacerPedido(req.body.listaProductos, req.body.direccion)
+        const montoTotal = req.body.listaProductos.reduce((total, p) => total + p.cantidad * p.precio, 0 )
         res.json({
-            orden: req.body.orden,
+            listaProductos: req.body.listaProductos,
             direccion: pedido.direccion,
             montoTotal
         })
