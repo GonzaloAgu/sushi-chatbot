@@ -2,6 +2,9 @@ import { IGeminiMessage, IMessage } from "../../types";
 import { IProducto,IProductoSolicitado } from "../../types";
 const API_URL: string  = import.meta.env.VITE_BACKEND_URL;
 
+if(!API_URL){
+  throw new Error("No se ingresó correctamente la URL base del backend en la variable de entorno VITE_BACKEND_URL")
+}
 const handleMenuMessage = (initialText: string, menu: Array<IProducto>): string => {
   let newText = initialText;
   newText += "\n\n"

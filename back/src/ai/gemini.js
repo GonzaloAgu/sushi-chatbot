@@ -6,6 +6,8 @@ const prompts = readPrompts();
 const TEMPERATURE = 0.1;
 
 const apiKey = process.env.GEMINI_KEY;
+if(!apiKey)
+  throw new Error("No se ingresó correctamente una API de gemini en el archivo .env. Usar variable GEMINI_KEY")
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const getModel = schema => {
