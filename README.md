@@ -1,0 +1,76 @@
+# Chatbot para tienda de Sushi
+
+## Indice
+
+- [Introduccion](#introducción)
+- [Instalación](#instalación)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
+- [Características](#características)
+- [Casos de uso](#casos-de-uso)
+  - [Preguntar por el menú](#preguntar-por-el-menú)
+  - [Hacer un pedido](#hacer-un-pedido)
+  - [Preguntas frecuentes](#preguntas-frecuentes)
+
+## Introducción
+Este proyecto consiste en la creación de un chatbot para una tienda de sushi ficticia llamada "El infierno del Saka". Cumple el propósito de atender a los clientes y venderles los productos de la tienda.
+
+## Instalación
+
+### 1. Clonar repositorio
+```bash
+git clone https://github.com/GonzaloAgu/sushi-chatbot.git
+```
+
+### 2. Backend
+
+Se requiere **NodeJS 18 o versión superior** (se usa fetch) y que el servicio de **MongoDB** esté corriendo en la máquina. Al iniciar el backend, **se creará la base de datos y sus colecciones automáticamente**.
+
+```bash
+cd back
+npm install
+npm start
+```
+
+### 3. Frontend
+
+```bash
+cd ../front
+npm install
+npm run dev
+```
+
+## Características
+- Uso de inteligencia artificial, permitiendo una comunicación flexible con el usuario en lenguaje natural.
+- Mostrar el menú de la tienda cuando el cliente lo solicite.
+- Procesar pedidos del usuario y almacenarlos en una base de datos.
+- Respuesta a preguntas frecuentes respecto al negocio.
+- Contexto de conversación completa.
+
+## Casos de uso
+
+### Preguntar por el menú
+El menú se lee directamente desde la base de datos, asegurando que la IA no alucine productos que no existen o se equivoque en los precios.
+
+![image](https://github.com/user-attachments/assets/153e8870-4377-4822-bcf3-4e6a6f9e79e2)
+
+---
+### Hacer un pedido
+El usuario debe presionar el botón de confirmar para que el pedido se lleve a cabo. Puede hacer ajustes al pedido con mensajes subsiguientes (ejemplo: quita un teriyaki y agrega un roll veggie).
+
+![image](https://github.com/user-attachments/assets/d07afb4d-f75c-4e6d-b9f5-2240d446c372)
+
+---
+### Preguntas frecuentes
+El modelo está alimentado con información del negocio que puede ser fácilmente modificada o expandida a traves del archivo prompts.json.
+
+![image](https://github.com/user-attachments/assets/7800ffc4-2f88-43bb-bc43-0a3474d5f354)
+
+---
+#### Preguntas configuradas de forma predeterminada:
+
+- ¿Hacen envíos a domicilio?
+- ¿Dónde está el local?
+- ¿Llegan a (barrio)?
+- ¿En qué días y horarios abren?
+- ¿Qué medios de pago aceptan?
