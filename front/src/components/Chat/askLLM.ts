@@ -17,7 +17,6 @@ const handleMenuMessage = (initialText: string, menu: Array<IProducto>): string 
 const handleOrdenMessage = (initialText: string, orden: Array<IProductoSolicitado>, direccion: string): string => {
   let newText: string = initialText + "\n\n";
   let total: number = 0;
-  console.log(orden)
   orden.forEach((producto: IProductoSolicitado) => {
     newText += `${producto.nombre} x${producto.cantidad} - $${producto.precio} c/u\n`
     total += producto.precio * producto.cantidad;
