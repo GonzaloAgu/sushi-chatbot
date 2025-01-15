@@ -1,4 +1,4 @@
-import { IMessage } from "../../types";
+import { IGeminiMessage, IMessage } from "../../types";
 import { IProducto,IProductoSolicitado } from "../../types";
 const API_URL: string  = import.meta.env.VITE_BACKEND_URL;
 
@@ -25,15 +25,29 @@ const handleOrdenMessage = (initialText: string, orden: Array<IProductoSolicitad
   return newText;
 }
 
-export default async function askLLM(userMsg: string, onResponse: (response: IMessage) => void) {
-    
+function parseHistoryMessagesToGemini (history: IMessage[]): IGeminiMessage[] {
+  const parsedHistory: IGeminiMessage[] = [];
+  history.forEach(msg => {
+    parsedHistory.push({
+      role: msg.role === "assistant" ? "model" : "user",
+      parts: [{ text: msg.text }]
+    })
+  })
+  return parsedHistory;
+}
+
+export default async function askLLM(userMsg: string, history: IMessage[] = [], onResponse: (response: IMessage) => void) {
+  
+    const parsedHistory = parseHistoryMessagesToGemini(history)
+
     const response = await fetch(API_URL + "/sendchat" , {
       "method": "POST",
       "headers": {
         "content-type": "application/json"
       },
       "body": JSON.stringify({
-        "message": userMsg
+        "message": userMsg,
+        "contents": parsedHistory
       })
     })
 

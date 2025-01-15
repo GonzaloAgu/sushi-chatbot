@@ -19,3 +19,8 @@ export interface IMessage {
     type?: "otro" | "orden" | "menu",
     orden?: IOrden
 }
+
+export interface IGeminiMessage {
+    role: "model" | "user",
+    parts: {text: String}[]
+}

@@ -20,18 +20,47 @@ const getModel = schema => {
   })
 }
 
-export const askGemini = async msg => {
+const getModelToSelectFromMenu = schema => {
+  return genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+    systemInstruction: JSON.stringify({ mainPrompt: prompts.selectIdFromMenu}),
+    generationConfig: {
+      temperature: TEMPERATURE,
+      responseMimeType: "application/json",
+      responseSchema: schema
+    }
+  })
+}
+
+const parseChatHistoryContents = (msg, contents) => {
+  const newContents = [...contents, {
+    role: "user",
+    parts: [
+      {
+        text: msg
+      }
+    ]
+  }]
+
+  return newContents;
+}
+
+export const askGemini = async (msg, contents) => {
   console.log("Consultando a LLM: ", msg)
+
   const model = getModel(GeminiResponseSchemas.default)
-  const result = await model.generateContent(msg);
+  const parsedContents = parseChatHistoryContents(msg, contents)
+  console.log(parsedContents[parsedContents.length - 1].parts)
+  const result = await model.generateContent({contents: parsedContents});
   return JSON.parse(result.response.text());
 };
 
-export const getProductsSelectedByUser = async (msg, productos) => {
+export const getProductsSelectedByUser = async (msg, productos, contents) => {
   const model = getModel(GeminiResponseSchemas.productList)
   const query = {
     userMsg: msg,
-    productos
+    productos,
+    historialChat: contents
   }
   const response = await model.generateContent(JSON.stringify(query))
   try {

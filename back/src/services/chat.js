@@ -8,10 +8,10 @@ const handleMenuRequest = async (response) => {
     return response;
 }
 
-const handleOrderRequest = async (message, response) => {
+const handleOrderRequest = async (message, response, contents) => {
   const menuItems = await getMenu();
   
-  const productos = await getProductsSelectedByUser(message, menuItems);
+  const productos = await getProductsSelectedByUser(message, menuItems, contents);
   if(productos?.length === 0){
     response.mensaje = "No se encontraron los productos que solicitaste. Intenta pedir con mayor precisión."
   } 
@@ -32,12 +32,12 @@ const handleOrderRequest = async (message, response) => {
   return response;
 }
 
-export const sendChat = async (message) => {
-  let response = await askGemini(message);
+export const sendChat = async (message, contents) => {
+  let response = await askGemini(message, contents);
   if (response.tipo === "menu") {
     response = await handleMenuRequest(response);
   } else if (response.tipo === "orden") {
-    response = await handleOrderRequest(message, response)
+    response = await handleOrderRequest(message, response, contents)
   }
   return response;
 };

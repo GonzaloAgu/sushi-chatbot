@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
 router.post('/sendchat', async (req, res) => {
     try {
-        const response = await sendChat(req.body.message)
+        const response = await sendChat(req.body.message, req.body.contents)
         res.json(response)
     } catch (e) {
         console.error("Error al comunicarse con la IA: ", e)

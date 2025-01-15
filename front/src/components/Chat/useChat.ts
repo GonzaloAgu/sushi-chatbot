@@ -22,7 +22,7 @@ export default function useChat() {
                 addMessage(msg);
                 setWaiting(true);
     
-                askLLM(userMsg, (response) => {
+                askLLM(userMsg, messages, (response) => {
                     addMessage(response);
                     setWaiting(false);
                     if(response.type === "orden" && response.orden?.listaProductos.length){
