@@ -6,7 +6,7 @@ const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
 function ConfirmBtn() {
   const orden = useContext(OrdenContext);
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState<boolean>(false);
   const addMessage = useContext(ChatContext);
 
   const handleClick = async () => {

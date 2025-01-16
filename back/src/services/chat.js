@@ -1,6 +1,5 @@
 import { askGemini, getProductsSelectedByUser } from "../ai/gemini.js";
 import { getMenu } from "./menu.js";
-import { hacerPedido } from "./pedidos.js"
 
 const handleMenuRequest = async (response) => {
     const menuItems = await getMenu();
