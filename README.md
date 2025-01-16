@@ -13,6 +13,7 @@
   - [Preguntar por el menú](#preguntar-por-el-menú)
   - [Hacer un pedido](#hacer-un-pedido)
   - [Preguntas frecuentes](#preguntas-frecuentes)
+- [Tests](#tests)
 
 ## Introducción
 Este proyecto consiste en la creación de un chatbot para una tienda de sushi ficticia llamada "El infierno del Saka". Cumple el propósito de atender a los clientes y venderles los productos de la tienda.
@@ -173,7 +174,7 @@ El modelo está alimentado con información del negocio que puede ser fácilment
 
 Para ejecutar los tests, diríjase al directorio "back" y ejecuta "npm run test"
 
-```
+```bash
 cd back
 npm run test
 ```
