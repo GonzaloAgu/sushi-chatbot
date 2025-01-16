@@ -9,7 +9,7 @@ export const hacerPedido = async (listaProductos, direccion) => {
     pedido.direccion = direccion;
 
     listaProductos.forEach(producto => {
-        pedido.productos.push({id: producto.objectId, cantidad: producto.cantidad, precio: producto.precio})
+        pedido.productos.push({_id: producto.objectId, cantidad: producto.cantidad, precio: producto.precio})
     });
     try {
         console.log("Guardando pedido con " + listaProductos.length + " producto(s)")
@@ -35,7 +35,7 @@ export const getPedido = async (id) => {
 export const getAllPedidos = async () => {
     try {
         let pedidos = await Pedido.find();
-        
+
         let plainPedidos = pedidos.map(pedido => {
             const plainPedido = pedido.toObject();
             delete plainPedido.__v; 

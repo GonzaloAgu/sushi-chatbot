@@ -55,7 +55,7 @@ npm run dev
 - Respuesta a preguntas frecuentes respecto al negocio.
 - Contexto de conversación completa.
 
-### Endpoints
+## Endpoints
 
 #### **GET /menu**
 
