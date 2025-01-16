@@ -48,7 +48,6 @@ const parseChatHistoryContents = (msg, contents) => {
 }
 
 export const askGemini = async (msg, contents) => {
-  console.log("Consultando a LLM: ", msg)
   const model = getModel(GeminiResponseSchemas.default)
   const parsedContents = parseChatHistoryContents(msg, contents)
   const result = await model.generateContent({contents: parsedContents});

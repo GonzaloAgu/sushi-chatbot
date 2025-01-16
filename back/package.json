@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node --env-file=.env app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --env-file=.env ./node_modules/mocha/bin/mocha test/test.js --timeout 6000"
   },
   "author": "GonzaloAgu",
   "license": "ISC",
@@ -18,5 +18,8 @@
     "lodash": "^4.17.21",
     "mongoose": "^8.9.3"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "mocha": "^11.0.1"
+  }
 }

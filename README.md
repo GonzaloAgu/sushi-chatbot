@@ -169,3 +169,11 @@ El modelo está alimentado con información del negocio que puede ser fácilment
 ![image](https://github.com/user-attachments/assets/7800ffc4-2f88-43bb-bc43-0a3474d5f354)
 
 
+## Tests
+
+Para ejecutar los tests, diríjase al directorio "back" y ejecuta "npm run test"
+
+```
+cd back
+npm run test
+```
