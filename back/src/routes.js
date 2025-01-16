@@ -1,11 +1,38 @@
 import { Router } from 'express';
 import { sendChat } from './services/chat.js';
-import { hacerPedido } from './services/menu.js';
+import { hacerPedido, getAllPedidos, getPedido } from './services/pedidos.js';
+import { getMenu } from './services/menu.js';
 
 const router = Router()
 
 router.get('/', (req, res) => {
     res.json({msg: "Hello world"})
+})
+
+router.get('/menu', async (req, res) => {
+    try {
+        const response = await getMenu();
+        res.json(response)
+    } catch(e) {
+        console.error("Error obtener el menú. ", e);
+        res.status(500).json({ ok: false, message: "Error al obtener el menú."})
+    }
+})
+
+
+router.get('/pedidos', async (req, res) => {
+    try {
+        if(req.query.id) {
+            const response = await getPedido(req.query.id);
+            res.json(response)
+        } else {
+            const response = await getAllPedidos();
+            res.json(response)
+        }
+    } catch(e) {
+        console.error("Error obtener pedidos. ", e);
+        res.status(500).json({ ok: false, message: "Error al obtener el o los pedidos."})
+    }
 })
 
 router.post('/sendchat', async (req, res) => {

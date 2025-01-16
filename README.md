@@ -57,11 +57,23 @@ npm run dev
 
 ### Endpoints
 
+#### **GET /menu**
+
+Endpoint usado para consultar los productos disponibles del menú.
+
+---
+
+#### **GET /pedidos?id=**
+
+Endpoint usado para consultar los pedidos del sistema. Opcionalmente incluye el parámetro id para consultar un pedido específico.
+
 ---
 
 #### **POST /sendchat**
 
-Se incluye en el body el nuevo mensaje a procesar, y un historial de mensajes anteriores que podría o no estar vacío (el historial se maneja en el lado del cliente, y tienen un orden temporal inverso (el primer mensaje del array es el ultimo recibido))
+Endpoint utilizado para comunicarse con el LLM. Se incluye en el body el nuevo mensaje (message) a procesar, y un historial de mensajes anteriores (contents) que podría o no estar vacío (el historial se maneja en el lado del cliente, y tienen un orden temporal inverso (el primer mensaje del array es el ultimo recibido))
+
+#### Request body
 ```json
 {
   "message": "Mensaje del usuario",
@@ -101,10 +113,10 @@ Se incluye en el body el nuevo mensaje a procesar, y un historial de mensajes an
 #### **POST /ordenar**
 Se incluye en el body un array de productos (solicitados por el cliente) y una dirección.
 ```json
-"{
+{
   "listaProductos": [{
     "objectId": "id del producto",
-    "cantidad": "Unidades de producto solicitadas"
+    "cantidad": "Unidades de producto solicitadas",
     "precio": "Precio unitario del producto"
   }],
   "direccion": "dirección de envío"
@@ -145,17 +157,15 @@ El usuario debe presionar el botón de confirmar para que el pedido se lleve a c
 
 ---
 ### Preguntas frecuentes
-El modelo está alimentado con información del negocio que puede ser fácilmente modificada o expandida a traves del archivo prompts.json.
-
-![image](https://github.com/user-attachments/assets/7800ffc4-2f88-43bb-bc43-0a3474d5f354)
-
----
-#### Preguntas configuradas de forma predeterminada:
 
 - ¿Hacen envíos a domicilio?
 - ¿Dónde está el local?
 - ¿Llegan a (barrio)?
 - ¿En qué días y horarios abren?
 - ¿Qué medios de pago aceptan?
+
+El modelo está alimentado con información del negocio que puede ser fácilmente modificada o expandida a traves del archivo prompts.json.
+
+![image](https://github.com/user-attachments/assets/7800ffc4-2f88-43bb-bc43-0a3474d5f354)
 
 

@@ -21,5 +21,5 @@ app.on('error', (error) => {
 });
 
 app.listen(PORT, () => {
-    console.log("Server listening on PORT", PORT);
+    console.log("Server escuchando en http://localhost:" + PORT);
 })
