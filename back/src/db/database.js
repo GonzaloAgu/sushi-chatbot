@@ -7,7 +7,8 @@ import path from "path";
 
 export const initDb = async () => {
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/saka');
+        const MONGO_URI = process.env.MONGO_URI;
+        await mongoose.connect(MONGO_URI + '/saka');
         console.log("MongoDB conectado")
 
         const menuCount = await Menu.countDocuments()

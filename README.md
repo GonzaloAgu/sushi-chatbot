@@ -7,7 +7,6 @@
   - [Clonar repositorio](#1-clonar-repositorio)
   - [Backend](#2-backend)
   - [Frontend](#3-frontend)
-- [Características](#características)
 - [Endpoints](#endpoints)
 - [Casos de uso](#casos-de-uso)
   - [Preguntar por el menú](#preguntar-por-el-menú)
@@ -17,6 +16,13 @@
 
 ## Introducción
 Este proyecto consiste en la creación de un chatbot para una tienda de sushi ficticia llamada "El infierno del Saka". Cumple el propósito de atender a los clientes y venderles los productos de la tienda.
+
+### Características
+- Uso de inteligencia artificial, permitiendo una comunicación flexible con el usuario en lenguaje natural.
+- Mostrar el menú de la tienda cuando el cliente lo solicite.
+- Procesar pedidos del usuario y almacenarlos en una base de datos.
+- Respuesta a preguntas frecuentes respecto al negocio.
+- Contexto de conversación completa.
 
 ## Instalación
 
@@ -29,9 +35,11 @@ git clone https://github.com/GonzaloAgu/sushi-chatbot.git
 
 > Se requiere **NodeJS 18 o versión superior** (se usa fetch) y que el servicio de **MongoDB** esté corriendo en la máquina. Al iniciar el backend, **se creará la base de datos y sus colecciones automáticamente**.
 
-a) Renombrar el archivo .env.example a .env, y colocar una API key de Gemini. Se puede conseguir una [aquí](https://aistudio.google.com/apikey)
+2a) Renombrar el archivo .env.example a .env, y colocar una **API key de Gemini**. Se puede conseguir una [aquí](https://aistudio.google.com/apikey)
 
-b) Ejecutar los siguientes comandos.
+2b) Colocar en el .env la URI de una conexión de Mongo (por default ya incluye "mongodb://localhost:27017")
+
+2c) Ejecutar los siguientes comandos.
 
 ```bash
 cd back
@@ -41,20 +49,15 @@ npm start
 
 ### 3. Frontend
 
-#### **Importante**: se debe renombrar el archivo .env.example a .env. De forma predeterminada se incluye ``VITE_BACKEND_URL=localhost:8080`` que es la que debería funcionar para el backend si no se modificó.
+3a) renombrar el archivo .env.example a .env. De forma predeterminada se incluye ``VITE_BACKEND_URL=localhost:8080`` que es la que debería funcionar para el backend si no se modificó el puerto.
+
+3b) Ejecutar los siguientes comandos 
 
 ```bash
-cd front
+cd ../front
 npm install
 npm run dev
 ```
-
-## Características
-- Uso de inteligencia artificial, permitiendo una comunicación flexible con el usuario en lenguaje natural.
-- Mostrar el menú de la tienda cuando el cliente lo solicite.
-- Procesar pedidos del usuario y almacenarlos en una base de datos.
-- Respuesta a preguntas frecuentes respecto al negocio.
-- Contexto de conversación completa.
 
 ## Endpoints
 
