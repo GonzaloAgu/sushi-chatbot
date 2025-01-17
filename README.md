@@ -33,11 +33,11 @@ git clone https://github.com/GonzaloAgu/sushi-chatbot.git
 
 ### 2. Backend
 
-> Se requiere **NodeJS 18 o versión superior** (se usa fetch) y que el servicio de **MongoDB** esté corriendo en la máquina. Al iniciar el backend, **se creará la base de datos y sus colecciones automáticamente**.
+> Se requiere **NodeJS 18 o versión superior** (se usa fetch nativo) y que el servicio de **MongoDB** esté en la máquina. Al iniciar el backend, **se creará la base de datos y sus colecciones automáticamente**.
 
 2a) Renombrar el archivo .env.example a .env, y colocar una **API key de Gemini**. Se puede conseguir una [aquí](https://aistudio.google.com/apikey)
 
-2b) Colocar en el .env la URI de una conexión de Mongo (por default ya incluye "mongodb://localhost:27017")
+2b) Crear una conexión de Mongo si no la tienes. Colocar en el .env la URI de la misma (por default ya incluye "mongodb://localhost:27017")
 
 2c) Ejecutar los siguientes comandos.
 
@@ -116,6 +116,9 @@ Endpoint utilizado para comunicarse con el LLM. Se incluye en el body el nuevo m
 
 #### **POST /ordenar**
 Se incluye en el body un array de productos (solicitados por el cliente) y una dirección.
+
+#### Request body
+
 ```json
 {
   "listaProductos": [{
@@ -181,3 +184,5 @@ Para ejecutar los tests, diríjase al directorio "back" y ejecuta "npm run test"
 cd back
 npm run test
 ```
+
+> Ten en cuenta que se incluyen tests con el LLM, es decir que se consumen tokens.
